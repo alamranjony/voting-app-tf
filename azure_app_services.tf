@@ -1,6 +1,6 @@
 locals {
   app_services = {
-    voting_app = { 
+    voting-app = { 
         sku_name = "P1v2" 
         os_type  = "Linux" 
      } 
@@ -49,7 +49,7 @@ resource "azurerm_application_insights" "appi" {
 resource "azurerm_service_plan" "app_service" {
   for_each = local.app_service_plans
 
-  name                = "asp-${each.key}-${local.env}-${local.location}-001"
+  name                = "asp-${each.key}-${local.env}-001"
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
   sku_name            = each.value.sku_name
@@ -59,7 +59,7 @@ resource "azurerm_service_plan" "app_service" {
 resource "azurerm_linux_web_app" "app" {
   for_each = local.app_services
 
-  name                      = "app-${each.key}-${local.env}-${local.location}-001"
+  name                      = "app-${each.key}-${local.env}-001"
   resource_group_name       = azurerm_resource_group.main.name
   location                  = azurerm_service_plan.app_service[lower("${each.value.sku_name}-${each.value.os_type}")].location
   service_plan_id           = azurerm_service_plan.app_service[lower("${each.value.sku_name}-${each.value.os_type}")].id

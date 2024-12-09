@@ -14,7 +14,7 @@
 # Local variables
 
 locals {
-  project   = "robotshop"
+  project   = "votingapp"
   env       = terraform.workspace
   region    = "asse"
   location  = "Southeast Asia"
@@ -37,7 +37,7 @@ locals {
   env_code_branch = local.env_code_branches[local.env]
   config_env_name = local.config_env_names[local.env]
 
-  storage_account_name = "robotshopsta01"
+  storage_account_name = "votingappsta01"
 
   service_plan_name    = "asp-${local.project}-${local.env}-${local.region}-001"
   logaw_name           = "log-${local.project}-${local.env}-${local.region}-001"
