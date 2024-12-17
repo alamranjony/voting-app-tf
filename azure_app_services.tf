@@ -78,5 +78,8 @@ resource "azurerm_linux_web_app" "app" {
     ftps_state              = "AllAllowed"
     scm_minimum_tls_version = "1.0"
     vnet_route_all_enabled  = true
+    application_stack {
+      python_version = "3.11"
+    }
   }
 }
