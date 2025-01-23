@@ -81,7 +81,7 @@ resource "azurerm_linux_web_app" "app" {
     application_stack {
       python_version = "3.11"
     }
-    app_command_line = "gunicorn --bind 0.0.0.0:8000 test:app"
+    # app_command_line = "gunicorn --bind 0.0.0.0:8000 test:app"
   }
 }
 
